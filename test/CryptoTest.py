@@ -23,7 +23,6 @@ class CryptoTest(unittest.TestCase):
 
         return super().setUp()
 
-
     def testCryptoCycle(self):
 
         test_data_str = json.dumps(self.test_data)

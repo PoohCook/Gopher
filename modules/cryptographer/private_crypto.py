@@ -1,4 +1,3 @@
-from pprint import pprint
 from cryptography.hazmat.primitives.ciphers import Cipher as CCipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
 
@@ -17,18 +16,17 @@ class PrivateCryptographer:
     rsa_private_key = None
 
     def __init__(self, public_key, private_key, password):
-        #Read key from file
+        # Read key from file
         with open(public_key, "r") as file:
-          pub_key_str = file.read()
+            pub_key_str = file.read()
 
-        pprint(type(pub_key_str))
         self.rsa_public_key = load_pem_public_key(bytes(pub_key_str, 'utf-8'), backend=default_backend())
         self.__check_initialized()
 
         if private_key:
-            #Read key from file
+            # Read key from file
             with open(private_key, "r") as file:
-              private_key_str = file.read()
+                private_key_str = file.read()
 
             self.rsa_private_key = load_pem_private_key(bytes(private_key_str, 'utf-8'),
                                                         backend=default_backend(), password=password)

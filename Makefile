@@ -13,10 +13,11 @@ update:
 
 test:
 	./RunAllUnitTests.py -f
+	$(MAKE) lint
 
 devtest:
 	./DevUnitTests.py -f
 
 lint:
-	pycodestyle modules/dispext test --config=.pycodestyle.cfg
+	pycodestyle modules test --config=.pycodestyle.cfg
 	pygount ./modules | awk '$$1 > 100'
